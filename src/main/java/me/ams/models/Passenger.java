@@ -3,14 +3,14 @@ package me.ams.models;
 public class Passenger {
     private int id;
     private String name;
-    private String gender;
+    private boolean gender;
 
     public Passenger() {}
-    public Passenger(String name, String gender) {
+    public Passenger(String name, boolean gender) {
         this.name = name;
         this.gender = gender;
     }
-    public Passenger(int id, String name, String gender) {
+    public Passenger(int id, String name, boolean gender) {
         this(name, gender);
         this.id = id;
     }
@@ -27,11 +27,11 @@ public class Passenger {
         this.name = name;
     }
 
-    public String getGender() {
+    public boolean getGender() {
         return gender;
     }
 
-    public void setGender(String gender) {
+    public void setGender(boolean gender) {
         this.gender = gender;
     }
 }
