@@ -15,12 +15,16 @@ Ability to retrieve and update passenger details.
 src/main/java/me/ams
 │── controllers
 │   │── PassengerController.java
+
 │── database
 │   │── Database.java
+
 │── models
 │   │── Passenger.java
+
 │── repositories
 │   │── PassengerRepository.java
+
 │── Main.java
 │── READ.ME
 
