@@ -13,19 +13,25 @@ Ability to retrieve and update passenger details.
 📂 Project Structure
 
 src/main/java/me/ams
+
 │── controllers
+
 │   │── PassengerController.java
 
 │── database
+
 │   │── Database.java
 
 │── models
+
 │   │── Passenger.java
 
 │── repositories
+
 │   │── PassengerRepository.java
 
 │── Main.java
+
 │── READ.ME
 
 ⚙️ Technologies Used
