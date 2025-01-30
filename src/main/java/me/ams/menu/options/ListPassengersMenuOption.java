@@ -12,6 +12,6 @@ public class ListPassengersMenuOption implements MenuOption {
 
     @Override
     public void execute() {
-        System.out.println(passengerController.getAllPassengers());
+        System.out.println("Here's all of the passengers that are stored in database:\n" + passengerController.getAllPassengers());
     }
 }

@@ -34,4 +34,13 @@ public class Passenger {
     public void setGender(boolean gender) {
         this.gender = gender;
     }
+
+    @Override
+    public String toString() {
+        return "Passenger{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", gender=" + gender +
+                '}';
+    }
 }
