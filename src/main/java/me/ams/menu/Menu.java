@@ -1,9 +1,7 @@
 package me.ams.menu;
 
 import me.ams.controllers.PassengerController;
-import me.ams.menu.options.AddPassengerMenuOption;
-import me.ams.menu.options.ListPassengersMenuOption;
-import me.ams.menu.options.ShowPassengerInfoByIdMenuOption;
+import me.ams.menu.options.*;
 
 import java.util.Scanner;
 
@@ -47,6 +45,8 @@ public class Menu {
             case 1 -> new AddPassengerMenuOption(passengerController);
             case 2 -> new ListPassengersMenuOption(passengerController);
             case 3 -> new ShowPassengerInfoByIdMenuOption(passengerController);
+            case 4 -> new ImportPassengersFromFileMenuOption(passengerController);
+            case 5 -> new ExitMenuOption();
             default -> null;
         };
     }
