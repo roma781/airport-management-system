@@ -4,10 +4,12 @@ import me.ams.database.Database;
 import me.ams.models.Flight;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 
 public class FlightRepository {
     public boolean createFlight(Flight flight) {
-        Connection connect = Database.getInstance().getConnection();
+        Connection connection = Database.getInstance().getConnection();
         String query = "INSERT INTO flights (airplane, destination, passengerIds) VALUES (?, ?, ?)";
         try{
 
