@@ -2,9 +2,11 @@ package me.ams.repositories;
 
 import me.ams.database.Database;
 import me.ams.models.Flight;
+import me.ams.models.Passenger;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class FlightRepository {
@@ -41,5 +43,32 @@ public class FlightRepository {
             System.out.println("Unable to delete flight: " + e.getMessage());
         }
         return false;
+    }
+    public Flight getFlightById(int id) {
+        Connection connection = Database.getInstance().getConnection();
+
+        String query = "SELECT * FROM flights WHERE id = ?";
+
+        try {
+            PreparedStatement statement = connection.prepareStatement(query);
+
+            statement.setInt(1, id);
+
+            ResultSet resultSet = statement.executeQuery();
+
+            if (resultSet.next()) {
+                return new Flight(
+                        resultSet.getInt("id"),
+                        resultSet.getString("airplane"),
+                        resultSet.getString("destination"),
+                        (Integer[]) resultSet.getArray("passenger_ids").getArray()
+                );
+            }
+        }
+        catch (SQLException e) {
+            System.out.println("Passenger not found: " + e.getMessage());
+        }
+
+        return null;
     }
 }
