@@ -14,13 +14,14 @@ public class PassengerRepository {
     public boolean createPassenger(Passenger passenger) {
         Connection connection = Database.getInstance().getConnection();
 
-        String query = "INSERT INTO passengers (name, gender) VALUES (?, ?)";
+        String query = "INSERT INTO passengers (name, age, gender) VALUES (?, ?, ?)";
 
         try {
             PreparedStatement statement = connection.prepareStatement(query);
 
             statement.setString(1, passenger.getName());
-            statement.setBoolean(2, passenger.getGender());
+            statement.setInt(2, passenger.getAge());
+            statement.setBoolean(3, passenger.getGender());
 
             statement.execute();
             return true;
@@ -64,7 +65,10 @@ public class PassengerRepository {
                 return new Passenger(
                         resultSet.getInt("id"),
                         resultSet.getString("name"),
-                        resultSet.getBoolean("gender")
+                        resultSet.getInt("age"),
+                        resultSet.getBoolean("gender"),
+                        resultSet.getInt("flight_id"),
+                        resultSet.getFloat("individual_ticket_price")
                 );
             }
         }
@@ -90,7 +94,10 @@ public class PassengerRepository {
                 passengers.add(new Passenger(
                         resultSet.getInt("id"),
                         resultSet.getString("name"),
-                        resultSet.getBoolean("gender")
+                        resultSet.getInt("age"),
+                        resultSet.getBoolean("gender"),
+                        resultSet.getInt("flight_id"),
+                        resultSet.getFloat("individual_ticket_price")
                 ));
             }
 

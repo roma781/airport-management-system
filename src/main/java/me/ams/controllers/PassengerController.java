@@ -12,10 +12,10 @@ public class PassengerController {
         this.repository = repository;
     }
 
-    public String createPassenger(String name, String gender) {
+    public String createPassenger(String name, int age, String gender) {
         boolean bGender = gender.equalsIgnoreCase("male");
 
-        boolean created = repository.createPassenger(new Passenger(name, bGender));
+        boolean created = repository.createPassenger(new Passenger(name, age, bGender));
         return created ? "Passenger was created: " : "Passenger creation failed";
     }
 
