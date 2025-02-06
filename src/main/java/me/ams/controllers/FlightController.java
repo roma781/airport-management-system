@@ -14,4 +14,9 @@ public class FlightController {
         boolean created = repository.createFlight(new Flight(airplane, destination, passengerIds));
         return created ? "Flight was created." : "Error creating flight";
     }
+
+    public String deleteFlight(int id) {
+        boolean deleted = repository.deleteFlight(id);
+        return deleted ? "Flight with " + id + "was deleted" : "Error deleting flight.";
+    }
 }
