@@ -10,7 +10,7 @@ import java.sql.SQLException;
 public class FlightRepository {
     public boolean createFlight(Flight flight) {
         Connection connection = Database.getInstance().getConnection();
-        String query = "INSERT INTO flights (airplane, destination, passengerIds) VALUES (?, ?, ?)";
+        String query = "INSERT INTO flights (airplane, destination, passenger_ids) VALUES (?, ?, ?)";
         try{
 
             PreparedStatement statement = connection.prepareStatement(query);

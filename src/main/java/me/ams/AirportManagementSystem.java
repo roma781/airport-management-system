@@ -1,8 +1,10 @@
 package me.ams;
 
+import me.ams.controllers.FlightController;
 import me.ams.controllers.PassengerController;
 import me.ams.database.Database;
 import me.ams.menu.Menu;
+import me.ams.repositories.FlightRepository;
 import me.ams.repositories.PassengerRepository;
 
 public class AirportManagementSystem {
@@ -15,7 +17,10 @@ public class AirportManagementSystem {
         PassengerRepository passengerRepository = new PassengerRepository();
         PassengerController passengerController = new PassengerController(passengerRepository);
 
-        Menu menu = new Menu(passengerController);
+        FlightRepository flightRepository = new FlightRepository();
+        FlightController flightController = new FlightController(flightRepository);
+
+        Menu menu = new Menu(passengerController, flightController);
         menu.startListeningForOptions();
     }
 }
