@@ -7,17 +7,17 @@ public class Flight {
     private int id;
     private String airplane;
     private String destination;
-    private int[] passengerIds;
+    private Integer[] passengerIds;
 
     public Flight() {}
 
-    public Flight(String airplane, String destination, int[] passengerIds) {
+    public Flight(String airplane, String destination, Integer[] passengerIds) {
         this.airplane = airplane;
         this.destination = destination;
         this.passengerIds = passengerIds;
     }
 
-    public Flight(int id, String airplane, String destination, int[] passengerIds) {
+    public Flight(int id, String airplane, String destination, Integer[] passengerIds) {
         this.id = id;
         this.airplane = airplane;
         this.destination = destination;
@@ -44,11 +44,11 @@ public class Flight {
         this.destination = destination;
     }
 
-    public int[] getPassengerIds() {
+    public Integer[] getPassengerIds() {
         return passengerIds;
     }
 
-    public void setPassengerIds(int[] passengerIds) {
+    public void setPassengerIds(Integer[] passengerIds) {
         this.passengerIds = passengerIds;
     }
 

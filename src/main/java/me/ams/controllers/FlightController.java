@@ -10,7 +10,7 @@ public class FlightController {
         this.repository = repository;
     }
 
-    public String createFlight(String airplane, String destination, int[] passengerIds) {
+    public String createFlight(String airplane, String destination, Integer[] passengerIds) {
         boolean created = repository.createFlight(new Flight(airplane, destination, passengerIds));
         return created ? "Flight was created." : "Error creating flight";
     }
