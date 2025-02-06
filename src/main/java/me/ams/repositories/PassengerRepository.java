@@ -31,6 +31,28 @@ public class PassengerRepository {
         return false;
     }
 
+    public boolean editPassengerById(int id, Passenger passenger) {
+        Connection connection = Database.getInstance().getConnection();
+
+        String query = "UPDATE passengers SET (name, age, gender, flight_id, individual_ticket_price) VALUES (?, ?, ?, ?, ?) WHERE id = ?";
+
+        try {
+            PreparedStatement statement = connection.prepareStatement(query);
+
+            statement.setString(1, passenger.getName());
+            statement.setInt(2, passenger.getAge());
+            statement.setBoolean(3, passenger.getGender());
+            statement.setInt(4, passenger.getFlightId());
+            statement.setFloat(5, passenger.getIndividualTicketPrice());
+            statement.setFloat(6, passenger.getId());
+
+            statement.execute();
+            return true;
+        } catch (SQLException e) {
+            System.out.println("Unable to edit passenger: " + e.getMessage());
+        }
+        return false;
+    }
     public boolean deletePassengerById(int id) {
         Connection connection = Database.getInstance().getConnection();
 

@@ -19,6 +19,12 @@ public class PassengerController {
         return created ? "Passenger was created: " : "Passenger creation failed";
     }
 
+    public String editPassengerById(int id, String name, int age, String gender, int flightId, int individual_ticket_price) {
+        boolean bGender = gender.equalsIgnoreCase("male");
+        boolean edited = repository.editPassengerById(id, new Passenger(name, age, bGender, flightId, individual_ticket_price));
+        return edited ? "Passenger was edited" : "An error occured when tried to edit a passenger";
+    }
+
     public String deletePassengerById(int id) {
         boolean deleted = repository.deletePassengerById(id);
         return deleted ? "Passenger was deleted" : "An error occured when tried to delete a passenger";

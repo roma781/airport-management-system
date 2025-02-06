@@ -26,6 +26,12 @@ public class Passenger {
         this.flightId = flightId;
         this.individualTicketPrice = individualTicketPrice;
     }
+    public Passenger(String name, int age, boolean gender, int flightId, float individualTicketPrice) {
+        this(name, age, gender);
+        this.flightId = flightId;
+        this.individualTicketPrice = individualTicketPrice;
+    }
+
 
     public int getId() {
         return id;
