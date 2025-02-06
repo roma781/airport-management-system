@@ -1,4 +1,4 @@
-package me.ams.menu.options;
+package me.ams.menu.options.flight;
 
 import me.ams.controllers.FlightController;
 import me.ams.controllers.PassengerController;

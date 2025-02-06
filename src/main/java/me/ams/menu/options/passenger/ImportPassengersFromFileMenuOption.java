@@ -1,4 +1,4 @@
-package me.ams.menu.options;
+package me.ams.menu.options.passenger;
 
 import me.ams.controllers.PassengerController;
 import me.ams.menu.MenuOption;

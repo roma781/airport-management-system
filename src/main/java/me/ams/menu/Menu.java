@@ -2,7 +2,12 @@ package me.ams.menu;
 
 import me.ams.controllers.FlightController;
 import me.ams.controllers.PassengerController;
-import me.ams.menu.options.*;
+import me.ams.menu.options.flight.CreateFlightMenuOption;
+import me.ams.menu.options.flight.ListFlightsMenuOption;
+import me.ams.menu.options.passenger.AddPassengerMenuOption;
+import me.ams.menu.options.passenger.ImportPassengersFromFileMenuOption;
+import me.ams.menu.options.passenger.ListPassengersMenuOption;
+import me.ams.menu.options.passenger.ShowPassengerInfoByIdMenuOption;
 
 import java.util.Scanner;
 
@@ -53,6 +58,7 @@ public class Menu {
             case 3 -> new ShowPassengerInfoByIdMenuOption(passengerController);
             case 4 -> new ImportPassengersFromFileMenuOption(passengerController);
             case 5 -> new CreateFlightMenuOption(flightController, passengerController);
+            case 6 -> new ListFlightsMenuOption(flightController);
             default -> null;
         };
     }

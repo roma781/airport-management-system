@@ -17,7 +17,7 @@ public class AirportManagementSystem {
         PassengerRepository passengerRepository = new PassengerRepository();
         PassengerController passengerController = new PassengerController(passengerRepository);
 
-        FlightRepository flightRepository = new FlightRepository();
+        FlightRepository flightRepository = new FlightRepository(passengerRepository);
         FlightController flightController = new FlightController(flightRepository);
 
         Menu menu = new Menu(passengerController, flightController);

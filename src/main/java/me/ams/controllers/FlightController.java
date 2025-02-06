@@ -1,7 +1,10 @@
 package me.ams.controllers;
 
 import me.ams.models.Flight;
+import me.ams.models.Passenger;
 import me.ams.repositories.FlightRepository;
+
+import java.util.List;
 
 public class FlightController {
     private FlightRepository repository;
@@ -18,5 +21,21 @@ public class FlightController {
     public String deleteFlight(int id) {
         boolean deleted = repository.deleteFlight(id);
         return deleted ? "Flight with " + id + "was deleted" : "Error deleting flight.";
+    }
+
+    public String getAllFlights() {
+        List<Flight> flights = repository.getAllFlights();
+
+        StringBuilder response = new StringBuilder();
+
+        for (Flight flight : flights) {
+            response.append(flight);
+
+            for (Passenger passenger : repository.getFlightPassengers(flight.getId())) {
+                response.append(passenger);
+            }
+        }
+
+        return response.toString();
     }
 }
