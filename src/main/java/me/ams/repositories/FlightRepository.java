@@ -123,10 +123,7 @@ public class FlightRepository {
 
             ResultSet resultSet = statement.executeQuery();
 
-            System.out.println(resultSet);
-
             if (resultSet.next()) {
-                System.out.println();
                 for (Integer i : (Integer[]) resultSet.getArray("passenger_ids").getArray()) {
                     System.out.println(passengerRepository.getPassengerById(i));
                     passengers.add(passengerRepository.getPassengerById(i));

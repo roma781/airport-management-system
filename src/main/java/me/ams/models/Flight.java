@@ -59,6 +59,6 @@ public class Flight {
                 ", airplane='" + airplane + '\'' +
                 ", destination='" + destination + '\'' +
                 ", passengerIds=" + Arrays.toString(passengerIds) +
-                '}';
+                "}\n";
     }
 }

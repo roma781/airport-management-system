@@ -29,7 +29,7 @@ public class FlightController {
         StringBuilder response = new StringBuilder();
 
         for (Flight flight : flights) {
-            response.append(flight);
+            response.append(flight.toString());
 
             for (Passenger passenger : repository.getFlightPassengers(flight.getId())) {
                 response.append(passenger);
