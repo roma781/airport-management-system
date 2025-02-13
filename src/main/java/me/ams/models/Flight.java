@@ -7,21 +7,21 @@ public class Flight {
     private int id;
     private String airplane;
     private String destination;
+    private float ticketPrice;
     private Integer[] passengerIds;
 
     public Flight() {}
 
-    public Flight(String airplane, String destination, Integer[] passengerIds) {
+    public Flight(String airplane, String destination, float ticketPrice, Integer[] passengerIds) {
         this.airplane = airplane;
         this.destination = destination;
+        this.ticketPrice = ticketPrice;
         this.passengerIds = passengerIds;
     }
 
-    public Flight(int id, String airplane, String destination, Integer[] passengerIds) {
+    public Flight(int id, String airplane, String destination, float ticketPrice, Integer[] passengerIds) {
+        this(airplane, destination, ticketPrice, passengerIds);
         this.id = id;
-        this.airplane = airplane;
-        this.destination = destination;
-        this.passengerIds = passengerIds;
     }
 
     public int getId() {
@@ -50,6 +50,18 @@ public class Flight {
 
     public void setPassengerIds(Integer[] passengerIds) {
         this.passengerIds = passengerIds;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public float getTicketPrice() {
+        return ticketPrice;
+    }
+
+    public void setTicketPrice(float ticketPrice) {
+        this.ticketPrice = ticketPrice;
     }
 
     @Override

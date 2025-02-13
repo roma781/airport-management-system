@@ -5,33 +5,23 @@ public class Passenger {
     private String name;
     private int age;
     private boolean gender;
-    private int flightId;
-    private float individualTicketPrice;
+    private boolean isVip;
+    private int discount;
 
     public Passenger() {}
 
-    public Passenger(String name, int age, boolean gender) {
+    public Passenger(String name, int age, boolean gender, boolean isVip, int discount) {
         this.name = name;
         this.age = age;
         this.gender = gender;
+        this.isVip = isVip;
+        this.discount = discount;
     }
 
-    public Passenger(int id, String name, int age, boolean gender) {
-        this(name, age, gender);
+    public Passenger(int id, String name, int age, boolean gender, boolean isVip, int discount) {
+        this(name, age, gender, isVip, discount);
         this.id = id;
     }
-
-    public Passenger(int id, String name, int age, boolean gender, int flightId, float individualTicketPrice) {
-        this(id, name, age, gender);
-        this.flightId = flightId;
-        this.individualTicketPrice = individualTicketPrice;
-    }
-    public Passenger(String name, int age, boolean gender, int flightId, float individualTicketPrice) {
-        this(name, age, gender);
-        this.flightId = flightId;
-        this.individualTicketPrice = individualTicketPrice;
-    }
-
 
     public int getId() {
         return id;
@@ -61,20 +51,20 @@ public class Passenger {
         this.age = age;
     }
 
-    public int getFlightId() {
-        return flightId;
+    public boolean isVip() {
+        return isVip;
     }
 
-    public void setFlightId(int flightId) {
-        this.flightId = flightId;
+    public void setVip(boolean vip) {
+        isVip = vip;
     }
 
-    public float getIndividualTicketPrice() {
-        return individualTicketPrice;
+    public int getDiscount() {
+        return discount;
     }
 
-    public void setIndividualTicketPrice(float individualTicketPrice) {
-        this.individualTicketPrice = individualTicketPrice;
+    public void setDiscount(int discount) {
+        this.discount = discount;
     }
 
     @Override
