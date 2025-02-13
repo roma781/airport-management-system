@@ -1,7 +1,8 @@
 package me.ams.repositories;
 
-import me.ams.database.Database;
+import me.ams.database.PostgreSQL;
 import me.ams.models.Passenger;
+import me.ams.repositories.interfaces.IPassengerRepository;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -10,9 +11,10 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PassengerRepository {
+public class PassengerRepository implements IPassengerRepository {
+    @Override
     public boolean createPassenger(Passenger passenger) {
-        Connection connection = Database.getInstance().getConnection();
+        Connection connection = PostgreSQL.getInstance().getConnection();
 
         String query = "INSERT INTO passengers (name, age, gender) VALUES (?, ?, ?)";
 
@@ -31,8 +33,9 @@ public class PassengerRepository {
         return false;
     }
 
+    @Override
     public boolean editPassengerById(int id, Passenger passenger) {
-        Connection connection = Database.getInstance().getConnection();
+        Connection connection = PostgreSQL.getInstance().getConnection();
 
         String query = "UPDATE passengers SET (name, age, gender, flight_id, individual_ticket_price) VALUES (?, ?, ?, ?, ?) WHERE id = ?";
 
@@ -53,8 +56,10 @@ public class PassengerRepository {
         }
         return false;
     }
+
+    @Override
     public boolean deletePassengerById(int id) {
-        Connection connection = Database.getInstance().getConnection();
+        Connection connection = PostgreSQL.getInstance().getConnection();
 
         String query = "DELETE FROM passengers WHERE id = ?";
 
@@ -71,8 +76,9 @@ public class PassengerRepository {
         return false;
     }
 
+    @Override
     public Passenger getPassengerById(int id) {
-        Connection connection = Database.getInstance().getConnection();
+        Connection connection = PostgreSQL.getInstance().getConnection();
 
         String query = "SELECT * FROM passengers WHERE id = ?";
 
@@ -101,10 +107,11 @@ public class PassengerRepository {
         return null;
     }
 
+    @Override
     public List<Passenger> getAllPassengers() {
         List<Passenger> passengers = new ArrayList<>();
 
-        Connection connection = Database.getInstance().getConnection();
+        Connection connection = PostgreSQL.getInstance().getConnection();
 
         String query = "SELECT * FROM passengers";
 

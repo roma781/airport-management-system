@@ -4,8 +4,8 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-public class Database {
-    private static Database instance;
+public class PostgreSQL implements DatabaseConnectable{
+    private static PostgreSQL instance;
 
     private String host;
     private String username;
@@ -14,13 +14,14 @@ public class Database {
 
     private Connection connection;
 
-    private Database() {}
+    private PostgreSQL() {}
 
-    public static Database getInstance() {
-        if (instance == null) { instance = new Database(); }
+    public static PostgreSQL getInstance() {
+        if (instance == null) { instance = new PostgreSQL(); }
         return instance;
     }
 
+    @Override
     public Connection getConnection() {
         String url = host + "/" + dbName;
 
@@ -37,6 +38,7 @@ public class Database {
         return null;
     }
 
+    @Override
     public void closeConnection() {
         try {
             connection.close();

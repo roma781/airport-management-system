@@ -1,8 +1,9 @@
 package me.ams.repositories;
 
-import me.ams.database.Database;
+import me.ams.database.PostgreSQL;
 import me.ams.models.Flight;
 import me.ams.models.Passenger;
+import me.ams.repositories.interfaces.IFlightRepository;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -11,15 +12,16 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FlightRepository {
+public class FlightRepository implements IFlightRepository {
     private PassengerRepository passengerRepository;
 
     public FlightRepository(PassengerRepository passengerRepository) {
         this.passengerRepository = passengerRepository;
     }
 
+    @Override
     public boolean createFlight(Flight flight) {
-        Connection connection = Database.getInstance().getConnection();
+        Connection connection = PostgreSQL.getInstance().getConnection();
         String query = "INSERT INTO flights (airplane, destination, passenger_ids) VALUES (?, ?, ?)";
         try{
 
@@ -37,8 +39,10 @@ public class FlightRepository {
         }
         return false;
     }
+
+    @Override
     public boolean deleteFlight(int id) {
-        Connection connection = Database.getInstance().getConnection();
+        Connection connection = PostgreSQL.getInstance().getConnection();
         String query = "DELETE FROM flights WHERE id = ?";
         try {
             PreparedStatement statement = connection.prepareStatement(query);
@@ -52,8 +56,10 @@ public class FlightRepository {
         }
         return false;
     }
+
+    @Override
     public Flight getFlightById(int id) {
-        Connection connection = Database.getInstance().getConnection();
+        Connection connection = PostgreSQL.getInstance().getConnection();
 
         String query = "SELECT * FROM flights WHERE id = ?";
 
@@ -80,10 +86,11 @@ public class FlightRepository {
         return null;
     }
 
+    @Override
     public List<Flight> getAllFlights() {
         List<Flight> flights = new ArrayList<>();
 
-        Connection connection = Database.getInstance().getConnection();
+        Connection connection = PostgreSQL.getInstance().getConnection();
 
         String query = "SELECT * FROM flights";
 
@@ -109,10 +116,11 @@ public class FlightRepository {
         return null;
     }
 
+    @Override
     public List<Passenger> getFlightPassengers(int id) {
         List<Passenger> passengers = new ArrayList<>();
 
-        Connection connection = Database.getInstance().getConnection();
+        Connection connection = PostgreSQL.getInstance().getConnection();
 
         String query = "SELECT passenger_ids FROM flights WHERE id = ?";
 
