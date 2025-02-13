@@ -70,7 +70,8 @@ public class Flight {
                 "id=" + id +
                 ", airplane='" + airplane + '\'' +
                 ", destination='" + destination + '\'' +
+                ", ticketPrice=" + ticketPrice +
                 ", passengerIds=" + Arrays.toString(passengerIds) +
-                "}\n";
+                '}';
     }
 }

@@ -22,7 +22,7 @@ public class FlightRepository implements IFlightRepository {
     @Override
     public boolean createFlight(Flight flight) {
         Connection connection = PostgreSQL.getInstance().getConnection();
-        String query = "INSERT INTO flights (airplane, destination, ticket_price, passenger_ids) VALUES (?, ?, ?)";
+        String query = "INSERT INTO flights (airplane, destination, ticket_price, passenger_ids) VALUES (?, ?, ?, ?)";
         try{
 
             PreparedStatement statement = connection.prepareStatement(query);

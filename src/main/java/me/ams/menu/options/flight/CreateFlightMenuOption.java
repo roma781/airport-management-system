@@ -27,6 +27,8 @@ public class CreateFlightMenuOption implements MenuOption {
         System.out.print("Enter destination: ");
         String destination = scanner.nextLine();
 
+        System.out.print("Enter the ticket price: ");
+        float price = Float.parseFloat(scanner.nextLine());
 
         // The code below is a radiation hazard, fix and rewrite before endterm
         System.out.print("Enter passenger IDs (to stop type 'end'): ");
@@ -36,7 +38,7 @@ public class CreateFlightMenuOption implements MenuOption {
             ids.add(Integer.parseInt(scanner.nextLine()));
         }
 
-        flightController.createFlight(airplane, destination, ids.toArray(new Integer[0]));
+        flightController.createFlight(airplane, destination, price, ids.toArray(new Integer[0]));
 
         scanner.close();
     }

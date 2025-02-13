@@ -72,7 +72,10 @@ public class Passenger {
         return "Passenger{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
+                ", age=" + age +
                 ", gender=" + gender +
+                ", isVip=" + isVip +
+                ", discount=" + discount +
                 '}';
     }
 }

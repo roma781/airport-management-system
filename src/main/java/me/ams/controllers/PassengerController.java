@@ -14,18 +14,37 @@ public class PassengerController implements IPassengerController {
     }
 
     @Override
-    public String createPassenger(String name, int age, String gender, boolean isVip, int discount) {
+    public String createPassenger(String name, int age, String gender, String isVip) {
         boolean bGender = gender.equalsIgnoreCase("male");
+        boolean bIsVip = isVip.equalsIgnoreCase("yes");
 
-        boolean created = repository.createPassenger(new Passenger(name, age, bGender, isVip, discount));
-        return created ? "Passenger was created: " : "Passenger creation failed";
+        int discount = 0;
+
+        if (age < 10 || bIsVip) {
+            discount = 50;
+        }
+
+        boolean created = repository.createPassenger(new Passenger(name, age, bGender, bIsVip, discount));
+        return created
+                ? "Passenger was created with these parameters: " + name + ", " + gender + ", VIP = " + isVip
+                : "Passenger creation failed";
     }
 
     @Override
-    public String editPassengerById(int id, String name, int age, String gender, boolean isVip, int discount) {
+    public String editPassengerById(int id, String name, int age, String gender, String isVip) {
         boolean bGender = gender.equalsIgnoreCase("male");
-        boolean edited = repository.editPassengerById(id, new Passenger(name, age, bGender, isVip, discount));
-        return edited ? "Passenger was edited" : "An error occured when tried to edit a passenger";
+        boolean bIsVip = gender.equalsIgnoreCase("yes");
+
+        int discount = 0;
+
+        if (age < 10 || bIsVip) {
+            discount = 50;
+        }
+
+        boolean edited = repository.editPassengerById(id, new Passenger(name, age, bGender, bIsVip, discount));
+        return edited
+                ? "Passenger was edited with these new parameters: " + name + ", " + gender + ", VIP = " + isVip
+                : "An error occured when tried to edit a passenger";
     }
 
     @Override
