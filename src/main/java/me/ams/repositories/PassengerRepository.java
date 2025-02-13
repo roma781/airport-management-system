@@ -16,7 +16,7 @@ public class PassengerRepository implements IPassengerRepository {
     public boolean createPassenger(Passenger passenger) {
         Connection connection = PostgreSQL.getInstance().getConnection();
 
-        String query = "INSERT INTO passengers (name, age, gender) VALUES (?, ?, ?)";
+        String query = "INSERT INTO passengers (name, age, gender, is_vip, discount) VALUES (?, ?, ?, ?, ?)";
 
         try {
             PreparedStatement statement = connection.prepareStatement(query);
@@ -24,6 +24,10 @@ public class PassengerRepository implements IPassengerRepository {
             statement.setString(1, passenger.getName());
             statement.setInt(2, passenger.getAge());
             statement.setBoolean(3, passenger.getGender());
+            statement.setBoolean(4, passenger.isVip());
+            statement.setFloat(5, passenger.getDiscount());
+
+
 
             statement.execute();
             return true;
@@ -37,7 +41,7 @@ public class PassengerRepository implements IPassengerRepository {
     public boolean editPassengerById(int id, Passenger passenger) {
         Connection connection = PostgreSQL.getInstance().getConnection();
 
-        String query = "UPDATE passengers SET (name, age, gender, flight_id, individual_ticket_price) VALUES (?, ?, ?, ?, ?) WHERE id = ?";
+        String query = "UPDATE passengers SET (name, age, gender, is_vip, discount) VALUES (?, ?, ?, ?, ?) WHERE id = ?";
 
         try {
             PreparedStatement statement = connection.prepareStatement(query);
@@ -45,9 +49,9 @@ public class PassengerRepository implements IPassengerRepository {
             statement.setString(1, passenger.getName());
             statement.setInt(2, passenger.getAge());
             statement.setBoolean(3, passenger.getGender());
-            statement.setInt(4, passenger.getFlightId());
-            statement.setFloat(5, passenger.getIndividualTicketPrice());
-            statement.setFloat(6, passenger.getId());
+            statement.setBoolean(4, passenger.isVip());
+            statement.setFloat(5, passenger.getDiscount());
+            statement.setInt(6, passenger.getId());
 
             statement.execute();
             return true;
@@ -95,8 +99,8 @@ public class PassengerRepository implements IPassengerRepository {
                         resultSet.getString("name"),
                         resultSet.getInt("age"),
                         resultSet.getBoolean("gender"),
-                        resultSet.getInt("flight_id"),
-                        resultSet.getFloat("individual_ticket_price")
+                        resultSet.getBoolean("is_vip"),
+                        resultSet.getInt("discount")
                 );
             }
         }
@@ -125,8 +129,8 @@ public class PassengerRepository implements IPassengerRepository {
                         resultSet.getString("name"),
                         resultSet.getInt("age"),
                         resultSet.getBoolean("gender"),
-                        resultSet.getInt("flight_id"),
-                        resultSet.getFloat("individual_ticket_price")
+                        resultSet.getBoolean("is_vip"),
+                        resultSet.getInt("discount")
                 ));
             }
 

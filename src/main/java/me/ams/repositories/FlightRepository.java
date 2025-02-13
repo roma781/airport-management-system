@@ -22,14 +22,15 @@ public class FlightRepository implements IFlightRepository {
     @Override
     public boolean createFlight(Flight flight) {
         Connection connection = PostgreSQL.getInstance().getConnection();
-        String query = "INSERT INTO flights (airplane, destination, passenger_ids) VALUES (?, ?, ?)";
+        String query = "INSERT INTO flights (airplane, destination, ticket_price, passenger_ids) VALUES (?, ?, ?)";
         try{
 
             PreparedStatement statement = connection.prepareStatement(query);
 
             statement.setString(1, flight.getAirplane());
             statement.setString(2, flight.getDestination());
-            statement.setArray(3, connection.createArrayOf("INTEGER", flight.getPassengerIds()));
+            statement.setFloat(3, flight.getTicketPrice());
+            statement.setArray(4, connection.createArrayOf("INTEGER", flight.getPassengerIds()));
 
             statement.execute();
             return true;
@@ -75,6 +76,7 @@ public class FlightRepository implements IFlightRepository {
                         resultSet.getInt("id"),
                         resultSet.getString("airplane"),
                         resultSet.getString("destination"),
+                        resultSet.getFloat("ticket_price"),
                         (Integer[]) resultSet.getArray("passenger_ids").getArray()
                 );
             }
@@ -103,6 +105,7 @@ public class FlightRepository implements IFlightRepository {
                         resultSet.getInt("id"),
                         resultSet.getString("airplane"),
                         resultSet.getString("destination"),
+                        resultSet.getFloat("ticket_price"),
                         (Integer[]) resultSet.getArray("passenger_ids").getArray()
                 ));
             }
@@ -133,10 +136,11 @@ public class FlightRepository implements IFlightRepository {
 
             if (resultSet.next()) {
                 for (Integer i : (Integer[]) resultSet.getArray("passenger_ids").getArray()) {
-                    System.out.println(passengerRepository.getPassengerById(i));
                     passengers.add(passengerRepository.getPassengerById(i));
                 }
             }
+
+            return passengers;
         }
         catch (SQLException e) {
             System.out.println("Passengers of this flight are not found: " + e.getMessage());
