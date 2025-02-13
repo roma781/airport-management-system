@@ -27,8 +27,6 @@ public class PassengerRepository implements IPassengerRepository {
             statement.setBoolean(4, passenger.isVip());
             statement.setFloat(5, passenger.getDiscount());
 
-
-
             statement.execute();
             return true;
         } catch (SQLException e) {

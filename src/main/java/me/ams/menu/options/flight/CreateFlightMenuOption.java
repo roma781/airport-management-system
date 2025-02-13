@@ -1,10 +1,8 @@
 package me.ams.menu.options.flight;
 
-import me.ams.controllers.FlightController;
-import me.ams.controllers.PassengerController;
 import me.ams.controllers.interfaces.IFlightController;
 import me.ams.controllers.interfaces.IPassengerController;
-import me.ams.menu.MenuOption;
+import me.ams.menu.options.MenuOption;
 
 import java.util.*;
 

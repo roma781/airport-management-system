@@ -1,6 +1,6 @@
-package me.ams.menu.options;
+package me.ams.menu.options.other;
 
-import me.ams.menu.MenuOption;
+import me.ams.menu.options.MenuOption;
 
 public class ExitMenuOption implements MenuOption {
     @Override

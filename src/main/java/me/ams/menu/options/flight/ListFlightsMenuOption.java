@@ -1,11 +1,7 @@
 package me.ams.menu.options.flight;
 
-import me.ams.controllers.FlightController;
-import me.ams.controllers.PassengerController;
 import me.ams.controllers.interfaces.IFlightController;
-import me.ams.menu.MenuOption;
-import me.ams.repositories.FlightRepository;
-import me.ams.repositories.PassengerRepository;
+import me.ams.menu.options.MenuOption;
 
 public class ListFlightsMenuOption implements MenuOption {
     private IFlightController flightController;

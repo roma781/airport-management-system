@@ -1,8 +1,7 @@
 package me.ams.menu.options.passenger;
 
-import me.ams.controllers.PassengerController;
 import me.ams.controllers.interfaces.IPassengerController;
-import me.ams.menu.MenuOption;
+import me.ams.menu.options.MenuOption;
 
 import java.util.Scanner;
 
