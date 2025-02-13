@@ -16,8 +16,8 @@ public class FlightController implements IFlightController {
     }
 
     @Override
-    public String createFlight(String airplane, String destination, Integer[] passengerIds) {
-        boolean created = repository.createFlight(new Flight(airplane, destination, passengerIds));
+    public String createFlight(String airplane, String destination, float ticketPrice, Integer[] passengerIds) {
+        boolean created = repository.createFlight(new Flight(airplane, destination, ticketPrice, passengerIds));
         return created ? "Flight was created." : "Error creating flight";
     }
 

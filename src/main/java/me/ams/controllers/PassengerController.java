@@ -14,17 +14,17 @@ public class PassengerController implements IPassengerController {
     }
 
     @Override
-    public String createPassenger(String name, int age, String gender) {
+    public String createPassenger(String name, int age, String gender, boolean isVip, int discount) {
         boolean bGender = gender.equalsIgnoreCase("male");
 
-        boolean created = repository.createPassenger(new Passenger(name, age, bGender));
+        boolean created = repository.createPassenger(new Passenger(name, age, bGender, isVip, discount));
         return created ? "Passenger was created: " : "Passenger creation failed";
     }
 
     @Override
-    public String editPassengerById(int id, String name, int age, String gender, int flightId, int individual_ticket_price) {
+    public String editPassengerById(int id, String name, int age, String gender, boolean isVip, int discount) {
         boolean bGender = gender.equalsIgnoreCase("male");
-        boolean edited = repository.editPassengerById(id, new Passenger(name, age, bGender, flightId, individual_ticket_price));
+        boolean edited = repository.editPassengerById(id, new Passenger(name, age, bGender, isVip, discount));
         return edited ? "Passenger was edited" : "An error occured when tried to edit a passenger";
     }
 
