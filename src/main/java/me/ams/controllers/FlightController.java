@@ -4,13 +4,14 @@ import me.ams.controllers.interfaces.IFlightController;
 import me.ams.models.Flight;
 import me.ams.models.Passenger;
 import me.ams.repositories.FlightRepository;
+import me.ams.repositories.interfaces.IFlightRepository;
 
 import java.util.List;
 
 public class FlightController implements IFlightController {
-    private FlightRepository repository;
+    private IFlightRepository repository;
 
-    public FlightController(FlightRepository repository) {
+    public FlightController(IFlightRepository repository) {
         this.repository = repository;
     }
 
