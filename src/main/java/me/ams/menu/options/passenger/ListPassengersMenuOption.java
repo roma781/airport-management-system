@@ -1,12 +1,13 @@
 package me.ams.menu.options.passenger;
 
 import me.ams.controllers.PassengerController;
+import me.ams.controllers.interfaces.IPassengerController;
 import me.ams.menu.MenuOption;
 
 public class ListPassengersMenuOption implements MenuOption {
-    public PassengerController passengerController;
+    public IPassengerController passengerController;
 
-    public ListPassengersMenuOption(PassengerController passengerController) {
+    public ListPassengersMenuOption(IPassengerController passengerController) {
         this.passengerController = passengerController;
     }
 

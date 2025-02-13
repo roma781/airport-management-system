@@ -2,15 +2,17 @@ package me.ams.menu.options.flight;
 
 import me.ams.controllers.FlightController;
 import me.ams.controllers.PassengerController;
+import me.ams.controllers.interfaces.IFlightController;
+import me.ams.controllers.interfaces.IPassengerController;
 import me.ams.menu.MenuOption;
 
 import java.util.*;
 
 public class CreateFlightMenuOption implements MenuOption {
-    private FlightController flightController;
-    private PassengerController passengerController;
+    private IFlightController flightController;
+    private IPassengerController passengerController;
 
-    public CreateFlightMenuOption(FlightController flightController, PassengerController passengerController) {
+    public CreateFlightMenuOption(IFlightController flightController, IPassengerController passengerController) {
         this.flightController = flightController;
         this.passengerController = passengerController;
     }

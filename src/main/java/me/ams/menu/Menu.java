@@ -2,6 +2,8 @@ package me.ams.menu;
 
 import me.ams.controllers.FlightController;
 import me.ams.controllers.PassengerController;
+import me.ams.controllers.interfaces.IFlightController;
+import me.ams.controllers.interfaces.IPassengerController;
 import me.ams.menu.options.flight.CreateFlightMenuOption;
 import me.ams.menu.options.flight.ListFlightsMenuOption;
 import me.ams.menu.options.passenger.AddPassengerMenuOption;
@@ -12,10 +14,10 @@ import me.ams.menu.options.passenger.ShowPassengerInfoByIdMenuOption;
 import java.util.Scanner;
 
 public class Menu {
-    private PassengerController passengerController;
-    private FlightController flightController;
+    private IPassengerController passengerController;
+    private IFlightController flightController;
 
-    public Menu(PassengerController passengerController, FlightController flightController) {
+    public Menu(IPassengerController passengerController, IFlightController flightController) {
         this.passengerController = passengerController;
         this.flightController = flightController;
     }

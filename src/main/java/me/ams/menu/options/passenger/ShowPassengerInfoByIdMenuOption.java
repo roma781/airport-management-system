@@ -1,14 +1,15 @@
 package me.ams.menu.options.passenger;
 
 import me.ams.controllers.PassengerController;
+import me.ams.controllers.interfaces.IPassengerController;
 import me.ams.menu.MenuOption;
 
 import java.util.Scanner;
 
 public class ShowPassengerInfoByIdMenuOption implements MenuOption {
-    public PassengerController passengerController;
+    public IPassengerController passengerController;
 
-    public ShowPassengerInfoByIdMenuOption(PassengerController passengerController) {
+    public ShowPassengerInfoByIdMenuOption(IPassengerController passengerController) {
         this.passengerController = passengerController;
     }
 
